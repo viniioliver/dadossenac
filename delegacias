@@ -1,0 +1,11 @@
+import pandas as pd              # Importa a biblioteca pandas (manipulação de dados)
+import matplotlib.pyplot as plt  # Importa a biblioteca matplotlib para gráficos
+import numpy as np               # Importa numpy (cálculos numéricos)
+
+# Lê o arquivo CSV diretamente do site do ISP-RJ, separando por ';'
+df = pd.read_csv(
+    'https://www.ispdados.rj.gov.br/Arquivos/BaseDPEvolucaoMensalCisp.csv',sep=';',encoding='latin1')
+df_municipios = df[df['regiao'] == 'Capital']
+coluna_veiculo = ['roubo_veiculo','furto_veiculos','recuperacao_veiculos']
+veiculos_delegacia = df_municipios.groupby('cisp')[coluna_veiculo].sum()
+veiculos_delegacia['']
